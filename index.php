@@ -41,7 +41,12 @@ $db = new aksi();
         foreach ($db->tampilkan() as $row) : ?>
           <tr class="hover:bg-gray-50">
             <td class="border border-gray-300 px-4 py-2 text-center"><?= $no++ ?></td>
-            <td class="border border-gray-300 px-4 py-2"><?= $row['judul'] ?></td>
+            <td class="border border-gray-300 px-4 py-2">
+              <a href="detail.php?id=<?= $row['id_buku'] ?>"
+                class="text-blue-600 font-semibold hover:underline hover:text-blue-800 transition duration-200 cursor-pointer">
+                <?= $row['judul'] ?>
+              </a>
+            </td>
             <td class="border border-gray-300 px-4 py-2"><?= $row['penulis'] ?></td>
             <td class="border border-gray-300 px-4 py-2 text-center"><?= $row['tahunTerbit'] ?></td>
             <td class="border border-gray-300 px-4 py-2"><?= $row['kategori'] ?></td>
@@ -50,7 +55,9 @@ $db = new aksi();
             </td>
             <td class="border border-gray-300 px-4 py-2 text-center">
               <a href="hapus.php?id=<?= $row['id_buku'] ?>"
-                class="text-red-600 hover:text-red-800 font-semibold transition duration-300">Hapus</a>
+                class="text-red-600 hover:text-red-800 font-semibold transition duration-300">Hapus</a> |
+              <a href="update.php?id=<?= $row['id_buku'] ?>"
+                class="text-red-600 hover:text-red-800 font-semibold transition duration-300">Update</a>
             </td>
           </tr>
         <?php endforeach; ?>
